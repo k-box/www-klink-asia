@@ -1,0 +1,43 @@
+{
+    "private": true,
+    "scripts": {
+        "local": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --env=local --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "staging": "cross-env NODE_ENV=staging node_modules/webpack/bin/webpack.js --progress --hide-modules --env=staging --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --env=production --config=node_modules/laravel-mix/setup/webpack.config.js",
+        "dev": "npm run local",
+        "watch": "npm run local -- --watch"
+    },
+    "urlDependencies": {
+        "klaro": "https://klaro.kiprotect.com/klaro.js"
+    },
+    "devDependencies": {
+        "browser-sync": "^2.23.6",
+        "browser-sync-webpack-plugin": "^2.0.1",
+        "cross-env": "^3.2.3",
+        "download": "^7.0.0",
+        "glob-all": "^3.1.0",
+        "hasbin": "^1.2.3",
+        "laravel-mix": "^2.0.0",
+        "laravel-mix-purgecss": "^2.2.0",
+        "less": "^3.0.4",
+        "less-loader": "^4.1.0",
+        "lodash.kebabcase": "^4.1.1",
+        "lodash.without": "^4.4.0",
+        "node-cmd": "^3.0.0",
+        "on-build-webpack": "^0.1.0",
+        "purgecss-webpack-plugin": "^1.2.0",
+        "tailwindcss": "^0.6.1",
+        "webpack-watch": "^0.2.0",
+        "yargs": "^4.6.0"
+    },
+    "dependencies": {
+        "hogan.js": "^3.0.2",
+        "k-search-js": "https://github.com/k-box/k-search-client-js.git#master",
+        "lodash.assignin": "^4.2.0",
+        "lodash.flattendeep": "^4.4.0",
+        "lodash.indexof": "^4.0.5",
+        "lodash.pull": "^4.1.0",
+        "lodash.transform": "^4.6.0",
+        "promise-polyfill": "^8.0.0"
+    }
+}

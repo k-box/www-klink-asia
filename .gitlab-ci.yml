@@ -1,0 +1,36 @@
+stages:
+  - build
+  - deploy
+
+cache:
+  key: "wwwklinkasia-2018"
+  paths:
+  - .composer-cache/
+  - .yarn/
+
+
+build_plain:
+  image: "docker.klink.asia/main/docker-php:7.1"
+  stage: build
+  script:
+    - export COMPOSER_CACHE_DIR=`pwd`/.composer-cache
+    - yarn config set cache-folder .yarn
+    - echo "KLINK_URL=$KLINK_CONNECTION_URL" >> .env
+    - echo "KLINK_TOKEN=$KLINK_CONNECTION_TOKEN" >> .env
+    - composer install --prefer-dist
+    - yarn
+    - yarn production
+  tags:
+    - docker
+
+build_docker:
+  stage: build
+  only:
+   - tags
+   - master
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+    - docker build -t $CI_REGISTRY_IMAGE:${CI_COMMIT_REF_NAME#v} --build-arg KLINK_URL=${KLINK_CONNECTION_URL} --build-arg KLINK_TOKEN=${KLINK_CONNECTION_TOKEN}  --build-arg APP_URL=${APP_URL} .
+    - docker push $CI_REGISTRY_IMAGE:${CI_COMMIT_REF_NAME#v}
+  tags:
+    - shell

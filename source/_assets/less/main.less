@@ -1,0 +1,206 @@
+/**
+ * This injects Tailwind's base styles, which is a combination of
+ * Normalize.css and some additional base styles.
+ */
+ @tailwind preflight;
+
+ /**
+  * This injects any component classes registered by plugins.
+  */
+ @tailwind components;
+ 
+ /**
+  * Here you would add any of your custom component classes; stuff that you'd
+  * want loaded *before* the utilities so that the utilities could still
+  * override them.
+  *
+  * Example:
+  *
+  * .btn { ... }
+  * .form-input { ... }
+  *
+  * Or if using a preprocessor or `postcss-import`:
+  *
+  * @import "components/buttons";
+  * @import "components/forms";
+  */
+
+
+a {
+    @apply .transition;
+}
+
+p {
+    @apply .mb-1;
+}
+
+.type {
+    background: url('../images/file.svg') no-repeat center center;
+    opacity: 0.8;
+}
+.type-document, .type-text-document, .type-uri-list {
+    background-image: url('../images/document.svg');
+}
+.type-image {
+    background-image: url('../images/image.svg');
+}
+.type-audio {
+    background-image: url('../images/audio.svg');
+}
+.type-presentation {
+    background-image: url('../images/document.svg');
+}
+.type-geodata {
+    background-image: url('../images/geo.svg');
+}
+.type-video, .type-dvd {
+    background-image: url('../images/video.svg');
+}
+.type-form, .type-spreadsheet {
+    background-image: url('../images/spreadsheet.svg');
+}
+.type-email {
+    background-image: url('../images/mail.svg');
+}
+
+
+.cover-natca {
+    background-image: url('../images/natca.png');
+}
+
+.cover-eba {
+    background-image: url('../images/eba.png');
+}
+
+.cover-iki {
+    background-image: url('../images/iki.png');
+}
+
+.cover-rpn {
+    background-image: url('../images/rpn.png');
+}
+
+.cover-uca {
+    background-image: url('../images/uca.png');
+}
+
+.cover-values {
+    background-image: url('../images/values.png');
+}
+
+
+
+.link-button {
+    @apply .inline-block .no-underline .p-2 .bg-blue .transition .outline-none .text-white .shadow;
+}
+.link-button:hover {
+    @apply .bg-blue-dark .shadow-raised .translateY-2px;
+}
+
+.link-button:focus {
+    @apply .bg-blue-dark;
+}
+.link-button:active {
+    @apply .bg-blue-darker;
+}
+
+.bg-acrylic {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+}
+
+
+.button-filter {
+    @apply .inline-block .p-2 .text-blue-darker .bg-blue-lightest;
+}
+
+.button-filter:hover {
+    @apply .bg-blue .text-white;
+}
+
+.button-filter:focus {
+    @apply .outline-none;
+}
+
+.button-filter:active {
+    @apply .bg-blue-darkest .text-white;
+}
+
+.button-filter .checked {
+    @apply .hidden;
+}
+.button-filter .unchecked {
+    @apply .inline-block;
+}
+
+.button-filter--checked {
+    @apply .bg-yellow;
+}
+
+.button-filter--checked .checked, .button-filter:active .checked {
+    @apply .inline-block;
+}
+.button-filter--checked .unchecked, .button-filter--checked:active .checked {
+    @apply .hidden;
+}
+
+ /**
+  * This injects all of Tailwind's utility classes, generated based on your
+  * config file.
+  */
+ @tailwind utilities;
+ 
+ /**
+  * Here you would add any custom utilities you need that don't come out of the
+  * box with Tailwind.
+  */
+
+
+
+.hero {
+    background: url('../images/background4.png') no-repeat center center;
+    background-size: cover;
+}
+
+.aspect-16x9 {
+    padding-bottom: 56.25%;
+}
+
+
+.transition {
+    transition: all .15s ease;
+}
+
+
+.hover\:shadow-raised:hover {
+    -webkit-box-shadow: 0 18px 35px 0 rgba(42,51,83,.12),0 8px 15px rgba(0,0,0,.06);
+    box-shadow: 0px 18px 35px 0px rgba(42,51,83,0.12), 0px 8px 15px rgba(0,0,0,0.06);
+}
+.shadow-raised {
+    -webkit-box-shadow: 0 18px 35px 0 rgba(42,51,83,.12),0 8px 15px rgba(0,0,0,.06);
+    box-shadow: 0px 18px 35px 0px rgba(42,51,83,0.12), 0px 8px 15px rgba(0,0,0,0.06);
+}
+
+.hover\:translateY-2px:hover {
+    -webkit-transform: translateY(-2px);
+    transform: translateY(-2px);
+}
+
+.translateY-2px {
+    -webkit-transform: translateY(-2px);
+    transform: translateY(-2px);
+}
+
+
+.pilot p, .pilot h1, .pilot h2, .pilot h3 {
+    @apply .mb-4;
+}
+
+.pilot-quote {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(5px);
+}
+
+.min-h-calc-available {
+    min-height: calc(~"-8rem + 100vh");
+}

@@ -1,0 +1,10 @@
+{
+    "name": "klink/www-klink-asia",
+    "description": "The K-Link.asia network website",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "tightenco/jigsaw": "^1.2",
+        "vlucas/phpdotenv": "^2.4"
+    }
+}

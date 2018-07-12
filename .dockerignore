@@ -1,0 +1,11 @@
+build_local
+build_production
+node_modules
+vendor
+old
+.env.example
+storage
+Dockerfile
+.dockerignore
+yarn-error.log
+.gitlab-ci.yml

@@ -1,0 +1,6 @@
+*.svg
+*.jpg
+*.png
+!.gitignore
+!pilot/*.png
+!pilot/*.jpg
