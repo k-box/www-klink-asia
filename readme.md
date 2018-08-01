@@ -65,8 +65,25 @@ The only analytics service supported is Matomo/Piwik and hosted on analytics.one
 
 ## Writing content
 
-_to be written_
+All content should be stored in the `source` directory. When authoring your content, you have the 
+choice to create files using several formats, including:
 
+- [Markdown](http://jigsaw.tighten.co/docs/content-markdown/)
+- [Laravel Blade files](http://jigsaw.tighten.co/docs/content-blade/) (_advanced_)
+
+Each file has a YAML frontmatter that define the layout (`extends`) to use and the section, inside the layout, to use.
+
+The base template for a page understand also `title` and `description` that will be used respectively
+as the page title and the meta description for search engines.
+
+```yaml
+---
+extends: _layouts.page
+section: content
+title: Page Title
+description: Description of the page
+---
+```
 
 
 ## Development
