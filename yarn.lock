@@ -4637,7 +4637,7 @@ jsprim@^1.2.2:
 
 "k-search-js@https://github.com/k-box/k-search-client-js.git#master":
   version "0.5.0"
-  resolved "https://github.com/k-box/k-search-client-js.git#d81e595535d5345a1716613b57f4a5b727832875"
+  resolved "https://github.com/k-box/k-search-client-js.git#9f62bfa38a64477131e017caa345f7996db0b4b3"
   dependencies:
     hogan.js "^3.0.2"
     lodash.assignin "^4.2.0"
