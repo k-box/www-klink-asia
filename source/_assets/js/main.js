@@ -406,6 +406,7 @@ window.App = function (config) {
                 term: urlParams.has('s') ? e(urlParams.get('s')) : '',
                 page: urlParams.has('page') ? e(urlParams.get('page')) : 1,
                 filters: activeFilters,
+                aggregations: [],
             };
             var title = document.title;
 
