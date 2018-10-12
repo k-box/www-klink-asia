@@ -27,6 +27,22 @@ module.exports = (function(){
             "url": "https://public.klink.asia/video/oembed"
         },
         {
+            "provider_name": "K-Box on klink.asia",
+            "provider_url": "https://klink.asia/",
+            "schemes": [
+                "https://*.klink.asia/d/show/*",
+            ],
+            "url": "https://{d}.klink.asia/api/oembed"
+        },
+        {
+            "provider_name": "K-Box on k-box.net",
+            "provider_url": "https://k-box.net/",
+            "schemes": [
+                "https://*.k-box.net/d/show/*",
+            ],
+            "url": "https://{d}.k-box.net/api/oembed"
+        },
+        {
             "provider_name": "YouTube",
             "provider_url": "https://www.youtube.com/",
             "url": "https://www.youtube.com/oembed",
@@ -109,7 +125,12 @@ module.exports = (function(){
                 
                 var reg = new RegExp(scheme.replace(/\*/g, '(.*)'), 'i');
                 if(url.match(reg)){
-                    providerUrl = provider.url;
+                    providerUrl = {
+                        provider_name: provider.provider_name,
+                        provider_url: provider.provider_url,
+                        scheme: scheme,
+                        url: provider.url,
+                    };
                 }
             }
 
@@ -126,6 +147,10 @@ module.exports = (function(){
         findProvider: function(url){
             return findProviderFor(url);
         },
+        
+        hasProviderFor: function(url){
+            return findProviderFor(url) !== null;
+        },
 
         resolve: function(url){
 
@@ -136,10 +161,21 @@ module.exports = (function(){
                 if(!oembedURL){
                     reject(new TypeError("Embed not supported"));
                 }
+
+                var reg = new RegExp(oembedURL.scheme.replace(/\*/g, '(.*)'), 'i');
+
+                var matches = url.match(reg);
+
+                if(matches.length === 3){
+                    // we have to replace the domain in the url
+
+                    resolve(oembedURL.url.replace(/{d}/g, matches[1]));
+                }
     
-                resolve(oembedURL);
+                resolve(oembedURL.url);
 
             }).then(function(oembedURL){
+
                 return httpGet(oembedURL, {
                     format: "json",
                     url: encodeURIComponent(url)
