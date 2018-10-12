@@ -5,17 +5,23 @@
 
 		<div class="bg-grey-dark min-h-64 py-4 mb-4">
 			<div class="container text-white">
-				{{#isVideo}}
-					{{#hasEmbed}}
-						{{{ embed }}}
-					{{/hasEmbed}}
-					{{^hasEmbed}}
+				
+				{{#hasEmbed}}
+					{{{ embed }}}
+				{{/hasEmbed}}
+
+				{{^hasEmbed}}
+					{{#isVideo}}
 						<video class="preview__video" src="{{{ url }}}" poster="{{{ thumbnail }}}" controls preload="none"></video>
-					{{/hasEmbed}}
-				{{/isVideo}}
+					{{/isVideo}}
+				{{/hasEmbed}}
+
+				
 				
 				{{^isVideo}}
-					<img class="preview__image block min-h-64 h-half-screen" src="{{{ thumbnail }}}" alt="{{{title}}}">
+					{{^hasEmbed}}
+						<img class="preview__image block min-h-64 h-half-screen" src="{{{ thumbnail }}}" alt="{{{title}}}">
+					{{/hasEmbed}}
 				{{/isVideo}}
 			</div>
 		</div>

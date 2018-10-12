@@ -479,6 +479,7 @@ window.App = function (config) {
 
                         if(oembed){
                             Oembed.resolve(oembed).then(function (embed) {
+                                console.info('oEmbed resolved', embed);
                                 result.hasEmbed = true;
                                 result.embed = embed.html;
                                 result.thumbnail = embed.thumbnail_url || result.thumbnail;

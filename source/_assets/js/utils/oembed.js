@@ -175,6 +175,7 @@ module.exports = (function(){
                 resolve(oembedURL.url);
 
             }).then(function(oembedURL){
+
                 return httpGet(oembedURL, {
                     format: "json",
                     url: encodeURIComponent(url)
