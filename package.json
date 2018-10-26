@@ -7,9 +7,6 @@
         "dev": "npm run local",
         "watch": "npm run local -- --watch"
     },
-    "urlDependencies": {
-        "klaro": "https://klaro.kiprotect.com/klaro.js"
-    },
     "devDependencies": {
         "browser-sync": "^2.23.6",
         "browser-sync-webpack-plugin": "^2.0.1",

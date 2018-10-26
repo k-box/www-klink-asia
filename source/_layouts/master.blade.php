@@ -77,7 +77,6 @@
                 
                 <div id="privacy">
                     {{-- <a class="text-grey-light hover:text-white focus:text-white" href="{{ $page->baseUrl }}/privacy-policy/">Privacy Policy</a> --}}
-                    <a class="text-grey-light hover:text-white focus:text-white" onClick="klaro.show();return false;" href="#privacy">Manage your consent</a>
                 </div>
 
             </div>
@@ -86,26 +85,9 @@
 
         @include('_partials.templates')
 
-        <script type="application/javascript" src="{{ mix('/js/klaro.js') }}" data-config="klaroConfig" data-style-prefix="klaro"></script>
         <script src="{{ mix('js/main.js') }}"></script>
 
         @stack('scripts')
-
-        <!-- Piwik -->
-        <script type="opt-in" data-type="application/javascript" data-name="matomo">
-            var _paq = _paq || [];
-            _paq.push(["setDomains", ["*.klink.asia"]]);
-            _paq.push(['trackPageView']);
-            _paq.push(['enableLinkTracking']);
-            (function() {
-                var u="//analytics.klink.asia/";
-                _paq.push(['setTrackerUrl', u+'piwik.php']);
-                _paq.push(['setSiteId', '2']);
-                var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-                g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-            })();
-        </script>
-        <!-- End Piwik Code -->
 
     </body>
 </html>
