@@ -351,7 +351,6 @@ window.App = function (config) {
                 catch(function (e) {
                     console.error("Search error", e);
                     container.innerHTML = _renderer.error({ message: "There was a problem in retriving the filters, please try again later." });
-                    document.title = title;
                 });
 
     }

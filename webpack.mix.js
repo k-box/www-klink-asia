@@ -18,15 +18,8 @@ mix.webpackConfig({
     ]
 });
 
-if (!fs.existsSync('./source/_assets/js/klaro.js')) {
-    download(Package.urlDependencies.klaro, './source/_assets/js/klaro.js').then(() => {
-        console.log('Klaro.js downloaded');
-    });
-}
-
 
 mix.js('source/_assets/js/main.js', 'js/main.js')
-    .scripts(['source/_assets/js/consentConfig.js', 'source/_assets/js/klaro.js/klaro.js'], 'source/assets/js/klaro.js')
     .less('source/_assets/less/main.less', 'css/main.css')
     .options({
         postCss: [
