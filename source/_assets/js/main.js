@@ -322,11 +322,15 @@ window.App = function (config) {
             
             result.push({
                 label: aggregationMapping.values && aggregationMapping.values[v.value] ? aggregationMapping.values[v.value] : null,
-                value: (aggregation === "mime_type") ? v.value.replace("/", "-") :  v.value,
+                value: (aggregation === "mime_type") ? ensureMimeTypeIsValidSelector(v.value) :  v.value,
             });
         }, []);
         
         return mapped;
+    }
+
+    function ensureMimeTypeIsValidSelector(mime){
+        return mime.replace("/", "-").replace(".", "_");
     }
 
     function initializeFilterUI(filtersSelector, searchFormSelector){
@@ -395,7 +399,7 @@ window.App = function (config) {
                 
                 if(_searchStatus.selectedFilters.mime_type && _searchStatus.selectedFilters.mime_type.length > 0){
                     activeFilters.mime_type = flattenDeep(map(processedFilters.mime_type, function(v){
-                        return v.replace("-", "/");
+                        return v.replace("-", "/").replace("_", "."); // apply the inverse of the normalization for making the mime type a valid selector
                     }));
                 }
 
