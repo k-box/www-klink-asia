@@ -330,7 +330,7 @@ window.App = function (config) {
     }
 
     function ensureMimeTypeIsValidSelector(mime){
-        return mime.replace("/", "-").replace(".", "_");
+        return mime.replace("/", "-").replace(/\./g, "_");
     }
 
     function initializeFilterUI(filtersSelector, searchFormSelector){
@@ -399,7 +399,7 @@ window.App = function (config) {
                 
                 if(_searchStatus.selectedFilters.mime_type && _searchStatus.selectedFilters.mime_type.length > 0){
                     activeFilters.mime_type = flattenDeep(map(processedFilters.mime_type, function(v){
-                        return v.replace("-", "/").replace("_", "."); // apply the inverse of the normalization for making the mime type a valid selector
+                        return v.replace("-", "/").replace(/_/g, "."); // apply the inverse of the normalization for making the mime type a valid selector
                     }));
                 }
 
