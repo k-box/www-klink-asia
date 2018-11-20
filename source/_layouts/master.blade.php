@@ -76,7 +76,7 @@
                 </div>
                 
                 <div id="privacy">
-                    {{-- <a class="text-grey-light hover:text-white focus:text-white" href="{{ $page->baseUrl }}/privacy-policy/">Privacy Policy</a> --}}
+                    <a class="text-grey-light hover:text-white focus:text-white" href="{{ $page->baseUrl }}/privacy/">Privacy Policy</a>
                 </div>
 
             </div>
