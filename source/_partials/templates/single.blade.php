@@ -35,7 +35,7 @@
 				
 				<div class="w-1/3 flex flex-col">
 					<div class="mb-3">
-						<a href="{{{ url }}}" class="inline-block no-underline p-2 bg-blue hover:bg-blue-dark focus:bg-blue-dark active:bg-blue-darker transition outline-none text-white shadow hover:shadow-raised hover:translateY-2px">View original</a>
+						<a href="{{{ url }}}" class="inline-block no-underline p-2 bg-blue hover:bg-blue-dark focus:bg-blue-dark active:bg-blue-darker transition outline-none text-white shadow hover:shadow-raised hover:translateY-2px">Download file</a>
 					</div>
 
 					<div class="mb-3 flex items-center">
