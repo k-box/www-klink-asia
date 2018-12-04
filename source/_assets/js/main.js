@@ -72,7 +72,12 @@ window.App = function (config) {
 		'application/vnd.oasis.opendocument.graphics': 'ODG Document',
 		'application/vnd.oasis.opendocument.chart': 'ODC Document',
 		'application/vnd.oasis.opendocument.database': 'ODB Document',
-		'application/vnd.oasis.opendocument.formula': 'ODF Document',
+        'application/vnd.oasis.opendocument.formula': 'ODF Document',
+        'application/gpx+xml': 'GPS Track data',
+        'application/geo+json': 'GeoJson file',
+        'application/vnd.google-earth.kml+xml': 'KML File',
+        'application/vnd.google-earth.kmz': 'Compressed KML File',
+        'application/geopackage+sqlite3': 'GeoPackage file',
     };
 
     var AGGREGATION_LABELS_MAPPING = {
@@ -427,7 +432,6 @@ window.App = function (config) {
 
             _search.find(request).then(function (results) {
 
-
                 container.innerHTML = _renderer.render('results', results);
 
             }).
@@ -460,29 +464,22 @@ window.App = function (config) {
             _search.get(uuid).
                 then(function (result) {
                     if (result) {
-
-                        var parts = result.url.split('/');
-                        
-                        if(parts.length >= 3){
-                            result.app_url = parts[0] + "//" + parts[2];
-                        }
-                        else {
-                            result.app_url = result.url;
-                        }
-
                         var oembed = null;
+                        var videoStreaming = null;
                         
-                        if(Oembed.hasProviderFor(result.originalUrl)){
-                            oembed = result.originalUrl;
+                        if (result.video && result.video.streaming && (result.video.streaming.dash || result.video.streaming.youtube || result.video.streaming.hls)) {
+                            videoStreaming = result.video.streaming.dash || result.video.streaming.youtube || result.video.streaming.hls || null;
                         }
 
-                        if (result.video && result.video.streaming && (result.video.streaming.dash || result.video.streaming.youtube || result.video.streaming.hls)) {
-                            oembed = result.video.streaming.dash || result.video.streaming.youtube || result.video.streaming.hls || null;
+                        if(videoStreaming && Oembed.hasProviderFor(videoStreaming)){
+                            oembed = videoStreaming;
+                        }
+                        else if(Oembed.hasProviderFor(result.originalUrl)){
+                            oembed = result.originalUrl;
                         }
 
                         if(oembed){
                             Oembed.resolve(oembed).then(function (embed) {
-                                console.info('oEmbed resolved', embed);
                                 result.hasEmbed = true;
                                 result.embed = embed.html;
                                 result.thumbnail = embed.thumbnail_url || result.thumbnail;
@@ -490,7 +487,7 @@ window.App = function (config) {
                             }).
                             catch(function () {
                                 result.hasEmbed = true;
-                                result.embed = '<div class="error">Embed could not be loaded. <a class="inline-block no-underline p-2 bg-blue hover:bg-blue-dark focus:bg-blue-dark active:bg-blue-darker transition outline-none text-white shadow hover:shadow-raised hover:translateY-2px" href="' + result.url + '">Visit ' + result.url + '</a>.</div>';
+                                result.embed = '<div class="error">The preview could not be loaded. <a class="inline-block no-underline p-2 bg-blue hover:bg-blue-dark focus:bg-blue-dark active:bg-blue-darker transition outline-none text-white shadow hover:shadow-raised hover:translateY-2px" href="' + result.url + '">Visit ' + result.url + '</a>.</div>';
                                 container.innerHTML = _renderer.render(template, { data: result });
                             });
                         }

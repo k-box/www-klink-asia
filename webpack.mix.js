@@ -41,6 +41,8 @@ mix.js('source/_assets/js/main.js', 'js/main.js')
             /cover/,
             /type/,
             /transition/,
+            /kbox_embed_iframe/,
+            /embed-container/,
         ]
       })
     .version();

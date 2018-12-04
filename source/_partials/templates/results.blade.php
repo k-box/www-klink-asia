@@ -26,7 +26,7 @@
                         </div>
                         <p class="inline-flex items-center">
                             <div class="meta"><span class="meta__label">Language</span> {{{ language }}}</div>
-                            <div class="meta"><span class="meta__label">Source</span> {{{ source }}}</div>
+                            <div class="meta"><span class="meta__label">Source</span> {{{ raw.uploader.url }}}</div>
                             {{#video.duration}}
                                 <div class="meta"><span class="meta__label">Duration</span> {{{ video.duration }}}</div>
                             {{/video.duration}}

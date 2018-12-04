@@ -3,11 +3,13 @@
 {{#data}}
 	<div class="single">
 
-		<div class="bg-grey-dark min-h-64 py-4 mb-4">
+		<div class="bg-black min-h-64 py-4 mb-4">
 			<div class="container text-white">
 				
 				{{#hasEmbed}}
-					{{{ embed }}}
+					<div class="embed-container">
+						{{{ embed }}}
+					</div>
 				{{/hasEmbed}}
 
 				{{^hasEmbed}}
@@ -48,7 +50,7 @@
 					<span class="mb-3">Copyright: {{{ copyright.licence }}} {{{ copyright.contact }}}</span>
 
 					<span class="mb-3">Language: {{{ language }}}</span>
-					<span class="mb-3">Source: {{{ app_url }}}</span>
+					<span class="mb-3">Source: {{{ raw.uploader.url }}}</span>
 					
 					{{^isVideo}}
 						<span class="mb-3">Size: {{{ size }}}</span>
