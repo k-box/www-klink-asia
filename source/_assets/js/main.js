@@ -72,7 +72,12 @@ window.App = function (config) {
 		'application/vnd.oasis.opendocument.graphics': 'ODG Document',
 		'application/vnd.oasis.opendocument.chart': 'ODC Document',
 		'application/vnd.oasis.opendocument.database': 'ODB Document',
-		'application/vnd.oasis.opendocument.formula': 'ODF Document',
+        'application/vnd.oasis.opendocument.formula': 'ODF Document',
+        'application/gpx+xml': 'GPS Track data',
+        'application/geo+json': 'GeoJson file',
+        'application/vnd.google-earth.kml+xml': 'KML File',
+        'application/vnd.google-earth.kmz': 'Compressed KML File',
+        'application/geopackage+sqlite3': 'GeoPackage file',
     };
 
     var AGGREGATION_LABELS_MAPPING = {
@@ -427,7 +432,6 @@ window.App = function (config) {
 
             _search.find(request).then(function (results) {
 
-
                 container.innerHTML = _renderer.render('results', results);
 
             }).
@@ -460,16 +464,6 @@ window.App = function (config) {
             _search.get(uuid).
                 then(function (result) {
                     if (result) {
-
-                        var parts = result.url.split('/');
-                        
-                        if(parts.length >= 3){
-                            result.app_url = parts[0] + "//" + parts[2];
-                        }
-                        else {
-                            result.app_url = result.url;
-                        }
-
                         var oembed = null;
                         
                         if(Oembed.hasProviderFor(result.originalUrl)){
