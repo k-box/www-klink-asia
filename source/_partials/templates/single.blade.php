@@ -3,11 +3,13 @@
 {{#data}}
 	<div class="single">
 
-		<div class="bg-grey-dark min-h-64 py-4 mb-4">
+		<div class="bg-black min-h-64 py-4 mb-4">
 			<div class="container text-white">
 				
 				{{#hasEmbed}}
-					{{{ embed }}}
+					<div class="embed-container">
+						{{{ embed }}}
+					</div>
 				{{/hasEmbed}}
 
 				{{^hasEmbed}}

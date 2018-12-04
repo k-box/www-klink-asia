@@ -465,18 +465,21 @@ window.App = function (config) {
                 then(function (result) {
                     if (result) {
                         var oembed = null;
+                        var videoStreaming = null;
                         
-                        if(Oembed.hasProviderFor(result.originalUrl)){
-                            oembed = result.originalUrl;
+                        if (result.video && result.video.streaming && (result.video.streaming.dash || result.video.streaming.youtube || result.video.streaming.hls)) {
+                            videoStreaming = result.video.streaming.dash || result.video.streaming.youtube || result.video.streaming.hls || null;
                         }
 
-                        if (result.video && result.video.streaming && (result.video.streaming.dash || result.video.streaming.youtube || result.video.streaming.hls)) {
-                            oembed = result.video.streaming.dash || result.video.streaming.youtube || result.video.streaming.hls || null;
+                        if(videoStreaming && Oembed.hasProviderFor(videoStreaming)){
+                            oembed = videoStreaming;
+                        }
+                        else if(Oembed.hasProviderFor(result.originalUrl)){
+                            oembed = result.originalUrl;
                         }
 
                         if(oembed){
                             Oembed.resolve(oembed).then(function (embed) {
-                                console.info('oEmbed resolved', embed);
                                 result.hasEmbed = true;
                                 result.embed = embed.html;
                                 result.thumbnail = embed.thumbnail_url || result.thumbnail;
@@ -484,7 +487,7 @@ window.App = function (config) {
                             }).
                             catch(function () {
                                 result.hasEmbed = true;
-                                result.embed = '<div class="error">Embed could not be loaded. <a class="inline-block no-underline p-2 bg-blue hover:bg-blue-dark focus:bg-blue-dark active:bg-blue-darker transition outline-none text-white shadow hover:shadow-raised hover:translateY-2px" href="' + result.url + '">Visit ' + result.url + '</a>.</div>';
+                                result.embed = '<div class="error">The preview could not be loaded. <a class="inline-block no-underline p-2 bg-blue hover:bg-blue-dark focus:bg-blue-dark active:bg-blue-darker transition outline-none text-white shadow hover:shadow-raised hover:translateY-2px" href="' + result.url + '">Visit ' + result.url + '</a>.</div>';
                                 container.innerHTML = _renderer.render(template, { data: result });
                             });
                         }
