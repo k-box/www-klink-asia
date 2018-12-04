@@ -48,7 +48,7 @@
 					<span class="mb-3">Copyright: {{{ copyright.licence }}} {{{ copyright.contact }}}</span>
 
 					<span class="mb-3">Language: {{{ language }}}</span>
-					<span class="mb-3">Source: {{{ app_url }}}</span>
+					<span class="mb-3">Source: {{{ raw.uploader.url }}}</span>
 					
 					{{^isVideo}}
 						<span class="mb-3">Size: {{{ size }}}</span>
