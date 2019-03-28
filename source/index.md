@@ -36,8 +36,7 @@ members:
  icsd-kaz:
   name: The **Interstate Commission on Sustainable Development (Scientific and Information Center Kazakhstan)** 
   website: http://www.mkurca.org/
-  microsite: https://kz.icsd.klink.asia/projects/rpoosur/ru
-  kbox: https://kz.icsd.klink.asia/
+  kbox: https://kz.icsd.klink.asia/projects/rpoosur/ru
   background: icsd-kaz
 
 interests:
