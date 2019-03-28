@@ -33,6 +33,11 @@ members:
   name: The **Global Project ValuES - Methods for Integrating Ecosystem Services into Policy, Planning, and Practice**, implemented by GIZ on behalf of BMU, as part of the German Government’s International Climate Initiative (IKI) 
   website: http://aboutvalues.net/
   background: values
+ icsd-kaz:
+  name: The **Interstate Commission on Sustainable Development (Scientific and Information Center Kazakhstan)** 
+  website: http://www.mkurca.org/
+  kbox: https://kz.icsd.klink.asia/projects/rpoosur/ru
+  background: icsd-kaz
 
 interests:
   join:
