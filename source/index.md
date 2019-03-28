@@ -34,7 +34,7 @@ members:
   website: http://aboutvalues.net/
   background: values
  icsd-kaz:
-  name: The **Interstate Commission on Sustainable Development (Scientific and Information Center Kazakhstan)**'s knowledge platform 
+  name: The **Interstate Commission on Sustainable Development (Scientific and Information Center Kazakhstan)** 
   website: http://www.mkurca.org/
   microsite: https://kz.icsd.klink.asia/projects/rpoosur/ru
   kbox: https://kz.icsd.klink.asia/
