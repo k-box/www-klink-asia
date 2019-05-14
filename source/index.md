@@ -43,7 +43,7 @@ interests:
   join:
    icon: link
    text: Join K-Link Asia?
-   mail: stephane.henriod@giz.de
+   mail: felix.beck@giz.de
   tech:
    icon: code
    text: Know more about the K-Link Technology?
